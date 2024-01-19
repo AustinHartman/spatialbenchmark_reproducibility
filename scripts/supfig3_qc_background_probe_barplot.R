@@ -29,7 +29,7 @@ for (i in seq(1, 9, 2)) {
         neg.con.probes <- names(counts)[
             grepl("NegControlProbe*", names(counts))]
     } else if (technology == "Resolve") {
-        background.features <- names(counts)[grepl("FP*", names(counts))]
+        background.features <- names(counts)[grepl("^FP.*", names(counts))]
     } else if (technology == "EEL FISH") {
         background.features <- names(counts)[grepl("Control*", names(counts))]
     } else if (technology == "MERFISH") {
@@ -78,7 +78,7 @@ p <- ggplot(df, aes(y = reorder(technology, ratio), x = ratio)) +
         panel.grid.minor = element_blank(),
         panel.border = element_blank(),
         legend.position = "none",
-        text = element_text(size = 35)) +
+        text = element_text(size = 30)) +
     labs(
         title = "Ratio of mean counts per gene to mean counts per background probe",
         subtitle = "Background probes are defined as probes that do not target any gene",

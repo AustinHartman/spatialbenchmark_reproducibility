@@ -19,7 +19,7 @@ if (technology == "vizgen") {
 } else if (technology == "tenx") {
     background.features <- names(counts)[grepl("NegControl*|BLANK*", names(counts))]
 } else if (technology == "resolve") {
-    background.features <- names(counts)[grepl("FP*", names(counts))]
+    background.features <- names(counts)[grepl("^FP.*", names(counts))]
 } else if (technology == "eelfish") {
     background.features <- names(counts)[grepl("Control*", names(counts))]
 } else if (technology == "merfish") {
@@ -38,8 +38,5 @@ plot <- ggplot(df, aes(x = reorder(features, -counts), y = counts, fill = catego
     theme_classic() + scale_fill_manual(values = color.mapping) +
     theme(axis.text = element_text(color = "black", size = 30), axis.title = element_text(size = 28), axis.text.x = element_blank())
 ggsave(args[length(args) - 1], plot, units = "px",  width = 3800, height = 3400)
-if (technology == "resolve") {
-    ggsave(args[length(args)], plot + ylim(0, 50000), units = "px",  width = 3800, height = 3400)
-} else {
-    ggsave(args[length(args)], plot + ylim(0, 15000), units = "px",  width = 3800, height = 3400)
-}
+ggsave(args[length(args)], plot + ylim(0, 15000), units = "px",  width = 3800, height = 3400)
+

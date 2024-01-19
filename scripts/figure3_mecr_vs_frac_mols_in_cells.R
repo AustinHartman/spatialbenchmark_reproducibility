@@ -39,7 +39,7 @@ message("Molecules loaded")
 # filter names of negative probes
 vizgen.bgd.feats <- names(vizgen.genes)[grepl("Blank*", names(vizgen.genes))]
 tenx.bgd.feats <- names(tenx.genes)[grepl("NegControl*|BLANK*", names(tenx.genes))]
-resolve.bgd.feats <- names(resolve.genes)[grepl("FP*", names(resolve.genes))]
+resolve.bgd.feats <- names(resolve.genes)[grepl("^FP.*", names(resolve.genes))]
 eelfish.bgd.feats <- names(eelfish.genes)[grepl("Control*", names(eelfish.genes))]
 merfish.bgd.feats <- names(merfish.genes)[grepl("blank*", names(merfish.genes))]
 message("Negative probes identified")
